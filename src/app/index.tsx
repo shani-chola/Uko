@@ -1,4 +1,3 @@
-
 import 'react-native-gesture-handler';
 
 import { useEffect, useState } from 'react';
@@ -146,8 +145,6 @@ function Heading({ children }) {
   return <Text style={styles.heading}>{children}</Text>;
 }
 
-// EVENT CARD
-
 function EventCard({ event }) {
   const openTicketLink = async () => {
     if (!event.ticket_url) {
@@ -207,8 +204,6 @@ function EventCard({ event }) {
   );
 }
 
-// SELLER CARD
-
 function SellerCard({ seller }) {
   return (
     <View style={styles.rowCard}>
@@ -252,8 +247,6 @@ function SellerCard({ seller }) {
     </View>
   );
 }
-
-// HOST CARD
 
 function HostCard({ host, onContact }) {
   return (
@@ -306,8 +299,6 @@ function HostCard({ host, onContact }) {
   );
 }
 
-// BARTER SECTION
-
 function BarterSection() {
   return (
     <View style={styles.section}>
@@ -347,8 +338,6 @@ function BarterSection() {
   );
 }
 
-// HOME SCREEN
-
 function HomeScreen({ navigation }) {
   const [events, setEvents] = useState([]);
   const [activeSection, setActiveSection] = useState('Marketplace');
@@ -372,8 +361,6 @@ function HomeScreen({ navigation }) {
       .includes(search.toLowerCase())
   );
 
-  // FETCH EVENTS FROM SUPABASE
-
   const fetchEvents = async () => {
     const { data, error } = await supabase
       .from('events')
@@ -391,8 +378,6 @@ function HomeScreen({ navigation }) {
   useEffect(() => {
     fetchEvents();
   }, []);
-
-  // CONTACT HOST
 
   const contactHost = host => {
     navigation.navigate('Inbox', {
@@ -506,8 +491,6 @@ function HomeScreen({ navigation }) {
   );
 }
 
-// INBOX SCREEN
-
 function InboxScreen({ route }) {
   const host = route.params;
   const [message, setMessage] = useState('');
@@ -575,8 +558,6 @@ function InboxScreen({ route }) {
   );
 }
 
-// BOTTOM NAVIGATION
-
 function MainTabs() {
   return (
     <Tab.Navigator
@@ -617,8 +598,6 @@ function MainTabs() {
     </Tab.Navigator>
   );
 }
-
-// DRAWER
 
 function CustomDrawer(props) {
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -717,8 +696,6 @@ function CustomDrawer(props) {
   );
 }
 
-// SETTINGS SCREEN
-
 function SettingsScreen() {
   const [notifications, setNotifications] = useState(true);
 
@@ -747,8 +724,6 @@ function SettingsScreen() {
     </View>
   );
 }
-
-// MAIN APP
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -791,8 +766,6 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// STYLES
 
 const styles = StyleSheet.create({
   screen: {
@@ -962,7 +935,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#444',
-    marginBottom: 15
+    marginBottom: 15,
   },
 
   profilePhoto: {
